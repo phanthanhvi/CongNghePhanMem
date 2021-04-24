@@ -1,0 +1,46 @@
+<section id="features" class="features">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+      <div class="col-lg-3 col-md-4">
+        <div class="icon-box">
+          <i class="ri-shopping-cart-line" style="color: #ffbb2c;"></i>
+          <h3><a href="{{url_for('payment')}}">Giỏ Hàng</a></h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="ri-user-3-fill" style="color: #e80368;"></i>
+          <h3><a href="{{url_for('user_login')}}">Đăng Nhập</a></h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+        <div class="icon-box">
+          <i class="ri-user-add-fill" style="color: #e361ff;"></i>
+          <h3><a href="{{url_for('register')}}">Đăng Ký</a></h3>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <div class="icon-box">
+          <i class="ri-message-2-line" style="color: #ffbb2c;"></i>
+          <h3><a href="https://www.facebook.com/HoaiThanhit/">Hổ Trợ</a></h3>
+        </div>
+      </div>
+      {% if current_user.is_authenticated%}
+      <div class="col-lg-6 col-md-4 mt-4">
+        <div class="icon-box">
+          <i class="ri-information-line" style="color: #ffbb2c;"></i>
+          <h3><a href="{{url_for('user_logout')}}">Xin Chào Bạn {{ current_user.name}} ! - Thông Tin Của Bạn </a></h3>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-4 mt-4">
+        <div class="icon-box">
+          <i class="ri-logout-box-r-line" style="color: #ffbb2c;"></i>
+          <h3><a href="{{url_for('user_logout')}}">Log Out</a></h3>
+        </div>
+      </div>
+      {% endif%}
+  </div>
+
+  </div>
+</section><!-- End Features Section -->

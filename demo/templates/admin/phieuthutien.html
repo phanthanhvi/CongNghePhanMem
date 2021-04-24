@@ -1,0 +1,46 @@
+{% extends 'admin/master.html' %}
+
+{% block body  %}
+    <form  method="POST"  action="" enctype="multipart/form-data">
+        <h3 class="text-center text-danger">Phiếu Thu Tiền</h3>
+        {%if err_msg %}
+        <div class="alert alert-warning">
+            {{err_msg}}
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <label>Người Lập Phiếu :</label>
+            <span class="form-control">{{current_user.name}}</span>
+        </div>
+        <div class = "form-group">
+            <label>Ngày :</label>
+            <input type="date"
+                   name ="date"
+                   class ="form-control">
+        </div>
+
+         <div class = "form-group">
+            <label>Tên Khách Hàng :</label>
+             <select name="idkhachhang" class="form-control">
+                 {% for p in khachhangno%}
+                 <option value="{{p.id}}">{{p.name}}</option>
+                 {% endfor %}
+             </select>
+        </div>
+        <div class="form-group">
+            <label>Số Tiền Thu : </label>
+            <input type="number"
+                   name="sotien"
+                   class="form-control"
+                   placeholder="Nhập vào số tiền Khách trả">
+
+        </div>
+
+        <div class = "form-group">
+              <input type ="submit"
+                     value="Thu Tiền"
+                     class ="btn btn-danger"/>
+        </div>
+    </form>
+
+{% endblock %}

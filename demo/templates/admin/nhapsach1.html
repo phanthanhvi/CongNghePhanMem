@@ -1,0 +1,60 @@
+{% extends 'admin/master.html' %}
+{%block head_css%}
+    {{ super() }}
+    <script src="{{url_for('static',filename='js/main.js')}}"> </script>
+{%endblock%}
+{% block body  %}
+    <form class="form-group" method="post">
+        <h3 class="text-center text-danger">Nhập Sách</h3>
+        <div class="row form-group">
+             <label class="mx-3"> Sách Nhập :</label>
+            <div>
+                 <select name="idsach" id="idsach" class=" col form-control">
+                     {% for p in sach %}
+                         <option  value="{{ p.id }}">{{p.name}}</option>
+                      {% endfor %}
+                 </select>
+            </div>
+            <button class="btn btn-outline-success">
+                <a href="javascript:;"
+                   onclick="addBookCart()">Đặt hàng</a>
+            </button>
+        </div>
+    </form>
+    <!-- xử lý cái giỏ -->
+        <div class="cash">
+    <h1 class="text-center text-info">Danh Sách Sách</h1>
+    <table class="table" id="new-product">
+        <tr>
+            <th>ID</th>
+            <th>Tên Sách </th>
+            <th>Giá Tiền </th>
+            <th>Số Lượng</th>
+        </tr>
+        {% if 'book_cart' in session %}
+        {% for p in session['book_cart'].values() %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{"{:,.0f}".format(p.donGia) }}</td>
+            <td>
+                <div class="form-group">
+                    <input type="number"
+                           value="{{ p.quantity }}"
+                           class="form-control " id="{{ p.id }}" style="width: 100px;"/>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {% endif %}
+    </table>
+    <!-- Xử lý cái giỏ -->
+    <h1 id="cart-info"></h1>
+    <input type="button"
+           onclick="submitAddBook()"
+           value="Thanh Toán"
+           class="btn btn-danger" />
+    </div>
+</form>
+{% endblock %}

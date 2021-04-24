@@ -1,0 +1,113 @@
+{% extends 'admin/master.html' %}
+
+{%block head_css%}
+    {{ super() }}
+         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{%endblock%}
+{% block body  %}
+<section>
+    <form method="post">
+         <label class="mx-3"> Báo Cáo Tháng : </label>
+        <div class=" form-group">
+             <select name="idthang" id="idthang" class="form-control">
+                 <option value="1">Tháng 1</option>
+                 <option value="2">Tháng 2</option>
+                 <option value="3">Tháng 3</option>
+                 <option value="4">Tháng 4</option>
+                 <option value="5">Tháng 5</option>
+                 <option value="6">Tháng 6</option>
+                 <option value="7">Tháng 7</option>
+                 <option value="8">Tháng 8</option>
+                 <option value="9">Tháng 9</option>
+                 <option value="10">Tháng 10</option>
+                 <option value="11">Tháng 11</option>
+                 <option value="12">Tháng 12</option>
+             </select>
+        </div>
+        <input type="submit" value="Lập Báo Cáo" class="btn btn-danger">
+    </form>
+    <table class="table" id="new-product">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Tồn Đầu </th>
+            <th>Tồn Cuối </th>
+            <th>Phát Sinh</th>
+        </tr>
+        {% for p in sach %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>0</td>
+            <td>{{ p.soLuong }}</td>
+            <td>{{ p.soLuong  }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="container">
+        <canvas id="myChart"></canvas >
+    </div>
+</section>
+<script type="text/javascript">
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+        type:'bar',
+        data:{
+            labels:['1', '2', '3', '4'],
+            datasets:[{
+                label:'Quality',
+                data:[
+                    248,
+                    597,
+                    249,
+                    45,
+
+                ],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:'Biểu Đồ Số Lượng',
+                fontSize:25
+            },
+            legend:{
+                display:true,
+                position:'right',
+                    labels:{
+                    fontColor:'#000'
+                }
+            },
+            layout:{
+                padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                }
+            },
+            tooltips:{
+                enabled:true
+            }
+        }
+    });
+</script>
+{% endblock %}

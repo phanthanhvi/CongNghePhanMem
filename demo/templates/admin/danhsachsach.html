@@ -1,0 +1,30 @@
+{% extends 'admin/master.html' %}
+
+{% block body  %}
+    <form  method="POST"  action="" enctype="multipart/form-data">
+        <h3 class="text-center text-danger">Danh Sách Sách</h3>
+ <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Tên sản phẩm</th>
+                <th>Thể Loại</th>
+                <th>Tác Giả</th>
+                <th>Giá</th>
+                <th>Description</th>
+                <th>Số Lượng</th>
+            </tr>
+          {% for p in sach%}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{p.nametl}}</td>
+                <td>{{p.nametg}}</td>
+                <td>{{ p.donGia }}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.soLuong}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+ <!-- ======= Popular Courses Section ======= -->
+  <section id="popular-courses" class="courses">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Courses</h2>
+        <p>Sách Bán Chạy</p>
+      </div>
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        {% for b in books%}
+          {% if b.id < 4 %}
+          <div class="col-xs-6 col-sm-6 d-flex align-items-stretch">
+            <div class="course-item">
+              <img width="420" height="500" src="{{ url_for('static', filename=b.avatar) }}" alt="{{b.name}}">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{ b.name }}</h4>
+                  <p class="price">{{ "{:,.0f}".format(b.donGia) }} VNĐ</p>
+                </div>
+                <h3 class="text-center"><a href="{{ url_for('book_detail',book_id=b.id) }}">{{b.name}}</a></h3>
+                <button class="btn btn-outline-success">
+                    <a href="javascript:;"
+                       onclick="addToCart({{ b.id }}, '{{ b.name }}', {{ b.donGia }})">Đặt hàng</a>
+                </button>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;150
+                    <i class="bx bx-heart"></i>&nbsp;65
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif%}
+        {% endfor %}
+      </div>
+       <!-- Cái thứ hai -->
+        <div class="section-title">
+          <h2>Courses</h2>
+          <p>Sách Thiếu Nhi</p>
+        </div>
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        {% for b in books %}
+          {%if b.id < 4 and b.nametl == 'Thiếu Nhi' %}
+          <div class="col-xs-6 col-sm-6  d-flex align-items-stretch">
+            <div class="course-item">
+              <img width="445" height="600" src="{{ url_for('static', filename=b.avatar) }}" alt="{{b.name}}">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{ b.name }}</h4>
+                  <p class="price">{{ "{:,.0f}".format(b.donGia) }} VNĐ</p>
+                </div>
+                <h3 class="text-center"><a href="{{ url_for('book_detail',book_id=b.id) }}">{{b.name}}</a></h3>
+                <button class="btn btn-outline-success">
+                    <a href="javascript:;"
+                       onclick="addToCart({{ b.id }}, '{{ b.name }}', {{ b.donGia }})">Đặt hàng</a>
+                </button>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;150
+                    &nbsp;&nbsp;
+                    <i class="bx bx-heart"></i>&nbsp;65
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+        {% endfor %}
+      </div>
+        <!-- Kết Thúc cái thứ hai -->
+         <!-- Cái thứ ba -->
+          <div class="section-title">
+            <h2>Courses</h2>
+            <p>Sách Của Tác Giả Nguyễn Nhật Ánh</p>
+          </div>
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            {% for b in books %}
+              {%if b.nametg == 'Nguyễn Nhật Ánh' %}
+              <div class="col-xs-6 col-sm-6  d-flex align-items-stretch">
+                <div class="course-item">
+                  <img width="445" height="600" src="{{ url_for('static', filename=b.avatar) }}" alt="{{b.name}}">
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h4>{{ b.name }}</h4>
+                      <p class="price">{{ "{:,.0f}".format(b.donGia) }} VNĐ</p>
+                    </div>
+                    <h3 class="text-center"><a href="{{ url_for('book_detail',book_id=b.id) }}">{{b.name}}</a></h3>
+                    <button class="btn btn-outline-success">
+                        <a href="javascript:;"
+                           onclick="addToCart({{ b.id }}, '{{ b.name }}', {{ b.donGia }})">Đặt hàng</a>
+                    </button>
+                    <div class="trainer d-flex justify-content-between align-items-center">
+                      <div class="trainer-rank d-flex align-items-center">
+                        <i class="bx bx-user"></i>&nbsp;150
+                        &nbsp;&nbsp;
+                        <i class="bx bx-heart"></i>&nbsp;65
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endif%}
+            {% endfor %}
+          </div>
+        <!-- Kết Thúc cái thứ hai -->
+    </div>
+  </section><!-- End Popular Courses Section -->

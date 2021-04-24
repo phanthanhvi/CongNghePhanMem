@@ -1,0 +1,74 @@
+{% extends 'admin/master.html' %}
+{%block head_css%}
+    {{ super() }}
+    <script src="{{url_for('static',filename='js/main.js')}}"> </script>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+{%endblock%}
+{% block body  %}
+    <form class="form-group" method="post">
+        <h3 class="text-center text-danger">Hóa Đơn Bán Sách</h3>
+        {%if err_msg %}
+        <div class="alert alert-warning">
+            {{err_msg}}
+        </div>
+        {% endif %}
+         <div class = "form-group">
+            <label>Khách Hàng :</label>
+             <select id="idkhach" class="form-control">
+             {% for k in khachhang%}
+                 <option value="{{k.id}}">{{k.name}}</option>
+             {% endfor %}
+             </select>
+        </div>
+        <div class="row form-group">
+             <label class="mx-3"> Sách Khách Hàng Mua :</label>
+            <div>
+                 <select name="idsach" id="idsach" class="col form-control">
+                 {% for p in sach%}
+                     <option name="{{p.donGia}}" value="{{p.id}}">{{p.name}}</option>
+                  {% endfor %}
+                 </select>
+            </div>
+            <button class="btn btn-outline-success">
+                <a href="javascript:;"
+                   onclick="addToSell()">Đặt hàng</a>
+            </button>
+        </div>
+    </form>
+    <!-- xử lý cái giỏ -->
+        <div class="cash">
+    <h1 class="text-center text-info">Danh Sách Sản Phẩm</h1>
+    <table class="table" id="new-product">
+        <tr>
+            <th>ID</th>
+            <th>Tên Sách </th>
+            <th>Giá Tiền </th>
+            <th>Số Lượng</th>
+        </tr>
+        {% if 'cart' in session %}
+        {% for p in session['cart'].values() %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ "{:,.3f}".format(p.donGia) }}</td>
+            <td>
+                <div class="form-group">
+                    <input type="number"
+                           value="{{ p.quantity }}"
+                           class="form-control " id="{{ p.id }}" style="width: 100px;"/>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {% endif %}
+    </table>
+    <!-- Xử lý cái giỏ -->
+    <h1 id="cart-info"></h1>
+    <input type="button"
+           onclick="submitBuy()"
+           value="Thanh Toán"
+           class="btn btn-danger" />
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{%extends "admin/master.html"%}
+
+{%block page_body%}
+    <h1 class ="text-danger text-center">LOGIN</h1>
+    <form method ="post" action = "{{url_for('admin_login')}}">
+        <div class = "form-group">
+            <input type ="text"
+                   name ="username"
+                   class ="form-control"
+                   placeholder="Username..."/>
+        </div>
+         <div class = "form-group">
+            <input type ="password"
+                   name ="password"
+                   class ="form-control"
+                   placeholder="Password..."/>
+        </div>
+         <div class = "form-group">
+              <input type ="submit"
+                     value="Login"
+                     class ="btn btn-danger"/>
+              <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+        </div>
+    </form>
+{%endblock%}

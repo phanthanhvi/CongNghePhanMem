@@ -1,0 +1,9 @@
+{% extends "admin/master.html" %}
+{% block body %}
+    {% if current_user.is_authenticated%}
+        <h3 class = 'text-danger text-center'>WELCOME {{current_user.name}} vô quản Trị Sách!</h3>
+    {% else %}
+        {% include "admin/login.html" %}
+    {% endif %}
+    {{ super() }}
+ {% endblock body %}

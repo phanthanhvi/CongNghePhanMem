@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ITBooks - Nhà sách của bạn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="static/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="static/image/products/logo.png"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/plugins.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/rrrrrrrr.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='image/favicon.ico') }}" rel="stylesheet" type="image/x-icon"/>
+    <script src="{{ url_for('static', filename='js/addcart.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <!-- Use Minified Plugins Version For Fast Page Load -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ajax-mail.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+</head>
+<body>
+<header>
+    <div class="site-wrapper" id="top">
+        <div class="site-header d-none d-lg-block">
+            <div class="header-middle pt--10 pb--10">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 ">
+                            <a href="index.html" class="site-brand">
+                                <img src="/static/image/ITBook.png" alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="header-phone ">
+                                <div class="icon">
+                                    <i class="fas fa-headphones-alt"></i>
+                                </div>
+                                <div class="text">
+                                    <p>Hỗ trợ 24/7</p>
+                                    <p class="font-weight-bold number">+8477 6169 342</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="main-navigation flex-lg-right">
+                                <ul class="main-menu menu-right ">
+                                    <li class="menu-item has-children">
+                                        <a href="{{url_for('index')}}">Trang Chủ</a>
+                                    </li>
+                                    <!-- Shop -->
+                                     <li class="menu-item has-children">
+                                        {% if current_user.is_authenticated %}
+                                        <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{current_user.name}}
+                                            <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                                         <ul class="sub-menu">
+                                                    <img width="120" src="{{ url_for('static', filename=current_user.avatar) }}" alt="" />
+                                                    <li><a href="{{ url_for('user_detail', user_id = current_user.id) }}">Xem thông tin</a></li>
+                                                    <li><a href="{{url_for('user_logout')}}">Đăng xuất</a></li>
+                                        </ul>
+                                        {% else %}
+                                        <a href="javascript:void(0)">Tài Khoản <i
+                                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                                        <ul class="sub-menu">
+                                                <li><a href="{{ url_for('user_login')}}">Đăng nhập</a></li>
+                                                <li><a href="{{ url_for('user_register')}}">Đăng kí</a></li>
+                                        </ul>
+                                        {% endif %}
+                                    </li>
+                                    <!-- Blog -->
+                                    <li class="menu-item">
+                                        <a href="contact.html">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom pb--10">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3">
+
+                            <h2 class="text-danger text-center">TRA CỨU SÁCH <i class="fas fa-search"></i></h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <form>
+                            <div class="header-search-block form-group ">
+                                <input name ="kw" type="text" placeholder="Nhập thông tin cần tìm..."/>
+                                 <input type="submit" value="Tìm kiếm" class="btn btn-danger" />
+                            </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="main-navigation flex-lg-right">
+                                <div class="cart-widget">
+                                    <div class="cart-block">
+                                         <div class="cart-total">
+                                            <span id ="total_number" class="text-number">
+                                                {{ cart_info.total_quantity }}
+                                            </span>
+                                            <span class="text-item">
+                                                Giỏ hàng
+                                            </span>
+                                            <span id ="total_price"class="price">
+                                                {{ "{:,.3f}".format(cart_info.total_amount) }} VNĐ
+                                                <i class="fas fa-chevron-down"></i>
+                                            </span>
+                                        </div>
+                                        <div class="cart-dropdown-block">
+                                            <div class=" single-cart-block ">
+                                                 <div class=" single-cart-block ">
+                                                {% if 'cart' in session %}
+                                                {% for p in session['cart'].values() %}
+                                                    <div class="cart-product">
+                                                        <a href="product-details.html" class="image">
+                                                            <img src="{{ url_for('static', filename=p.avatar) }}" alt="">
+                                                        </a>
+                                                        <div class="content">
+                                                            <h3 class="title"><a href="#">{{p.name}}</a>
+                                                            </h3>
+                                                            <p class="price"><span id ="cart_info" class="qty">{{p.quantity}} x</span> {{ "{:,.3f}".format(p.donGia) }} VNĐ</p>
+                                                            <button class="cross-btn"><i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                                {% else %}
+                                                    <h2 class="title">Không có sản phẩm trong giỏ</h2>
+                                                {% endif %}
+
+                                            </div>
+                                            </div>
+                                            <div class=" single-cart-block ">
+                                                <div class="btn-block">
+                                                    <a href="cart.html" class="btn">Xem giỏ hàng <i
+                                                            class="fas fa-chevron-right"></i></a>
+                                                    <a href="checkout.html" class="btn btn--primary">Thanh toán <i
+                                                            class="fas fa-chevron-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div></div>
+<body>
+<div class ="container">
+    <table class="table">
+            <tr>
+                <th></th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Thể loại</th>
+                <th>Tác giả</th>
+                <th></th>
+            </tr>
+            {% for p in books %}
+            <tr>
+                <td>
+                    <img width="120" alt="{{ p.name }}" src="{{ url_for('static', filename=p.avatar) }}" />
+                </td>
+                <td>
+                    <a href="{{url_for('book_details',book_id=p.id)}}">{{ p.name }}</a>
+                </td>
+                <td>{{ "{:,.1f}".format(p.donGia) }} VNĐ</td>
+                <td>{{p.nametl}}</td>
+                <td>{{p.nametg}}</td>
+                <td>
+                   <a href="javascript:;" onclick="addToCart({{ p.id }}, '{{p.name }}', {{ p.donGia }},'{{p.avatar}}')" class="single-btn">
+                    <input type="button" value="Thêm vào giỏ hàng" class="btn btn-success" />
+                </a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+</body>

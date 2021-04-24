@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+    <link rel="shortcut icon" type="image/png" href="static/image/products/logo.png"/>
+    <!-- Title Page-->
+    <title>ĐĂNG KÍ TÀI KHOẢN</title>
+      <link href="static/fontawesome-free-5.15.1-web/css/all.min.css" rel="stylesheet" />
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='css/register.css') }}" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <img src="/static/image/ITBook.png" alt="">
+                    <h1 class="title text-center">ĐĂNG KÍ TÀI KHOẢN</h1>
+                    {% if err_msg %}
+                        <div class="alert alert-danger">
+                                 {{ err_msg }}
+                        </div>
+                    {% endif %}
+                      <form method="post" action=""
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                                <label for="name">Họ tên</label>
+                                <input type="text"
+                                       name="name"
+                                       id="name"
+                                       required
+                                       class="form-control" />
+                        </div>
+                          <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email"
+                                           name="email"
+                                           id="email"
+                                           required
+                                           class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text"
+                                           name="username"
+                                           id="username"
+                                           required
+                                           class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Mật khẩu</label>
+                                    <input type="password"
+                                           name="password"
+                                           id="password"
+                                           required
+                                           class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Xác nhận mật khẩu</label>
+                                    <input type="password"
+                                           name="confirm-password"
+                                           id="confirm-password"
+                                           required
+                                           class="form-control" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="avatar">Ảnh đại diện</label>
+                                    <input type="file"
+                                           name="avatar"
+                                           id="avatar"
+                                           required
+                                           class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Đăng ký"
+                                           class="btn btn-danger" />
+                                    <a href="{{url_for('user_login')}}">
+							            Đăng nhập
+							              <i class="fas fa-forward"></i>
+						            </a>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
